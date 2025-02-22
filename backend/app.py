@@ -107,7 +107,7 @@ def aadhar():
         os.makedirs(app.config["UPLOAD_FOLDER"], exist_ok=True)
 
         # ✅ Save the file
-        filename = os.path.join(app.config["UPLOAD_FOLDER"], file.filename)
+        file_path = os.path.join(app.config["UPLOAD_FOLDER"], file.filename)
         file.save(file_path)
         print(f"✅ File saved at: {file_path}")  # Debugging
 
