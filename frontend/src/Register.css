@@ -1,0 +1,238 @@
+/* General container for the page */
+.container {
+  display: flex; /* Use flexbox for a 3-column layout */
+  justify-content: space-between; /* Distribute columns evenly */
+  align-items: flex-start; /* Align items at the top */
+  height: 200vh; /* Full height of the viewport */
+  width: 100%; /* Adjust the width to 100% */
+  padding: 20px; /* Add padding for spacing */
+  background: linear-gradient(180deg, #007bff 0%, #0561ff 100%);
+}
+
+/* Add a gap between the three columns */
+.container > * {
+  margin-right: 50px; /* Adding 50px gap between containers */
+}
+
+/* Remove margin-right from the last container to avoid extra space */
+.container > .cont3 {
+  margin-right: 0;
+}
+
+/* Form column styles */
+.form {
+  flex: 1; /* Form takes 1/3 of the space */
+  width: 540px; /* Maximum width for the form */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+/* Styling for the registration form */
+.registration-form {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  border-color: #00fff2;
+  color: azure;
+  box-shadow: 0px 0px 100px rgb(0, 255, 251);
+  height: 180vh;
+  width: 500px;
+  margin-right: -100px;
+}
+
+/* Image Slider Container (in the middle column) */
+.slider-container,
+.slider-container2 {
+  padding: 10px 30px;
+  margin-right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 2; /* Take up more space for the slider */
+  width: 450px; /* Fixed width for the slider */
+  height: 327.5px; /* Fixed height for the slider */
+  top: -50px;
+  border-radius: 5px;
+  overflow: hidden; /* Hide overflowing content */
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  left: -50px;
+  background-color: #2a6fde;
+  border-color: #00fff2;
+  color: azure;
+  box-shadow: 0px 0px 100px rgb(0, 255, 251);
+  /* Background color for the slider */
+  margin-top: -0px;
+}
+
+/* Styling for the image display inside the slider */
+.image-display {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  position: relative;
+  transition: transform 0.5s ease;
+  margin-left: -100px;
+}
+
+.image-display img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Cover ensures image fills the container */
+  object-position: center center; /* Centers the image if the aspect ratio doesn't match */
+  border-radius: 10px; /* Optional: to make image corners rounded */
+}
+
+/* Button styling for previous and next buttons */
+.prev-btn,
+.next-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  padding: 15px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+.prev-btn {
+  left: 10px;
+}
+
+.next-btn {
+  right: 10px;
+}
+
+/* Content column styles */
+.cont3 {
+  flex: 1; /* This will take the remaining space */
+  padding: 20px;
+  border-radius: 10px;
+  height: 180vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #2a6fde;
+  border-color: #00fff2;
+  color: azure;
+  box-shadow: 0px 0px 100px rgb(0, 255, 251);
+  flex-direction: column;
+  width: 10px;
+}
+
+.area {
+  width: 500px;
+  padding: 10px;
+  height: 320px;
+  margin-top: 10px;
+}
+
+/* General button styles */
+button {
+  padding: 10px 20px;
+  margin: 5px;
+  background-color: #373b40;
+  color: white;
+  border-color: #00fff2;
+  border-radius: 5px;
+  cursor: pointer;
+
+  box-shadow: 5px 5px 10px rgb(0, 255, 251);
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Form Group Styling */
+.form-group {
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input {
+  width: 90%; /* Full width of the parent */
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+input[type='file'] {
+  width: 90%; /* Full width of the parent */
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  border: none;
+  color: rgb(221, 225, 233);
+}
+
+/* Styling the submit button */
+button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #0313f4;
+  color: white;
+  border: #4e807e solid 5px;
+  border: 67px;
+  cursor: pointer;
+  box-shadow: 5px 5px 10px rgb(0, 255, 251);
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.Back {
+  background-color: rgba(214, 21, 37, 0.945);
+  color: white;
+  font-size: 15px;
+  font-family: "Poppins", sans-serif;
+  margin-right: 20px;
+  border: none;
+  padding: 10px 20px;
+}
+
+/* Form column styles */
+.form {
+  flex: 1; /* Form takes 1/3 of the space */
+  width: 540px; /* Maximum width for the form */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+/* Styling for the registration form */
+.registration-form {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  border-color: #00fff2;
+  color: azure;
+  box-shadow: 0px 0px 100px rgb(0, 255, 251);
+  height: 180vh;
+  width: 500px;
+  margin-right: -100px;
+}
+
+
+h4{
+  color: rgb(12, 12, 12);
+  font-family: "Poppins";
+}
