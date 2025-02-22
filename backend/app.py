@@ -7,7 +7,8 @@ from flask_cors import CORS
 import os
 import base64
 app = Flask(__name__)
-
+UPLOAD_FOLDER = "uploads"
+app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 CORS(app) 
 
 
