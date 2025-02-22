@@ -25,10 +25,11 @@ def text_clean(text):
 def find_keyword_higlight(TestFileName):
     print("hiii")
     # ✅ Set the Tesseract path dynamically
-    if os.name != "nt":  # If running on Linux (Render)
-       pytesseract.pytesseract.tesseract_cmd = os.path.join(os.getcwd(), "tesseract", "tesseract")
-    else:  # If running on Windows (Local)
-       pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+    # ✅ Set the Tesseract path based on environment
+    if os.name == "nt":  # Windows
+      pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+    else:  # Linux (Render)
+      pytesseract.pytesseract.tesseract_cmd = "/usr/bin/tesseract"
   
     if imghdr.what(TestFileName) == None:
         images = convert_from_path(TestFileName, dpi=300)
