@@ -1,9 +1,9 @@
+tesseract-ocr
 flask
 flask-cors
 gunicorn
 werkzeug
 opencv-python-headless
-streamlit
 numpy
 python-Levenshtein
 opencv-python
@@ -11,3 +11,4 @@ opencv-python-headless  # Optional for environments without GUI support
 pdf2image
 unidecode
 pytesseract
+
