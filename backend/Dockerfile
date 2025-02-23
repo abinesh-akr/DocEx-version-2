@@ -1,10 +1,12 @@
 # Use an official lightweight Python image
 FROM python:3.11
 
-# ✅ Install OpenCV dependencies (OpenGL)
+# ✅ Install OpenCV, Tesseract, and Poppler dependencies
 RUN apt-get update && apt-get install -y \
     tesseract-ocr \
     poppler-utils \
+    libgl1-mesa-glx \
+    libglib2.0-0 \
     && rm -rf /var/lib/apt/lists/*
 
 # Set the working directory in the container
@@ -20,5 +22,5 @@ COPY . .
 # Expose port 5000 for Flask
 EXPOSE 5000
 
-# Start the Flask app
-CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:5000", "app:app"]
+# ✅ Reduce Gunicorn workers to prevent memory crashes
+CMD ["gunicorn", "-w", "2", "-b", "0.0.0.0:5000", "app:app"]
