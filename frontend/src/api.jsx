@@ -1,5 +1,5 @@
 import axios from 'axios';
-const API_URL = import.meta.env.VITE_API_URL || 'https://flask2-e36m.onrender.com';
+const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:5000';
 
 
 export const uploadAadhar1 = async (data) => {
@@ -48,7 +48,7 @@ export const uploadAadhar = async (formData) => {
         console.log(formData)
         const response = await axios.post(`${API_URL}/api/aadhar`, formData, {
             headers: {
-                'Access-Control-Allow-Origin' : 'https://flask2-e36m.onrender.com/api/aadhar',
+                'Access-Control-Allow-Origin' : 'http://127.0.0.1:5000/api/aadhar',
                 'Content-Type': 'multipart/form-data'
             },
         });
