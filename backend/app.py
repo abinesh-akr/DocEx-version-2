@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-
+import logging
 from gate import process_gate
 from aadhar import process_aadhar
 from income import process_income
@@ -10,7 +10,7 @@ app = Flask(__name__)
 UPLOAD_FOLDER = "uploads"
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 CORS(app) 
-
+logging.basicConfig(level=logging.DEBUG)
 
 @app.route('/api/income', methods=['POST','GET'])
 def income():
