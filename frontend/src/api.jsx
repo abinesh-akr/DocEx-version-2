@@ -1,5 +1,5 @@
 import axios from 'axios';
-const API_URL = import.meta.env.VITE_API_URL || 'https://docex-version-2.onrender.com';
+const API_URL = import.meta.env.VITE_API_URL || 'https://docex-version-2-3.onrender.com';
 
 
 export const uploadAadhar1 = async (data) => {
@@ -48,7 +48,7 @@ export const uploadAadhar = async (formData) => {
         console.log(formData)
         const response = await axios.post(`${API_URL}/api/aadhar`, formData, {
             headers: {
-                'Access-Control-Allow-Origin' : 'https://docex-version-2.onrender.com/api/aadhar',
+                'Access-Control-Allow-Origin' : 'https://docex-version-2-3.onrender.com/api/aadhar',
                 'Content-Type': 'multipart/form-data'
             },
         });
