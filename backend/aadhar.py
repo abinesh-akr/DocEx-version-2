@@ -32,10 +32,10 @@ def find_keyword_higlight(TestFileName):
     except Exception as e:
       print(f"❌ OpenCV Error: {e}")
 
-    if os.getenv("RENDER"):
-       pytesseract.pytesseract.tesseract_cmd = os.path.join(os.getcwd(), "tesseract", "tesseract")
-    else:
-       pytesseract.pytesseract.tesseract_cmd = "/usr/bin/tesseract"
+    if os.name == 'nt':  # For Windows
+        pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+    else:  # For Linux-based environments
+        pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'    
   
     if imghdr.what(TestFileName) == None:
         images = convert_from_path(TestFileName, dpi=300)
