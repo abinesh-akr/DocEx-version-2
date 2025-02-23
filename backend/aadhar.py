@@ -26,6 +26,12 @@ def find_keyword_higlight(TestFileName):
     print("hiii")
     # ✅ Set the Tesseract path dynamically
     # ✅ Set the Tesseract path based on environment
+
+    try:
+      print(f"✅ OpenCV Version: {cv2.__version__}")
+    except Exception as e:
+      print(f"❌ OpenCV Error: {e}")
+
     if os.name == "nt":  # Windows
       pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
     else:  # Linux (Render)
