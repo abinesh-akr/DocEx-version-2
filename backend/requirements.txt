@@ -2,6 +2,7 @@ flask
 flask-cors
 poppler-utils
 gunicorn
+waitress
 werkzeug
 opencv-python-headless
 numpy
