@@ -1,5 +1,6 @@
 flask
 flask-cors
+poppler-utils
 gunicorn
 werkzeug
 opencv-python-headless
