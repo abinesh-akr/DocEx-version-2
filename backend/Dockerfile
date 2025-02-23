@@ -9,7 +9,7 @@ ADD  https://github.com/tesseract-ocr/tessdata/blob/main/eng.traineddata /usr/sh
 
 
 # Create a virtual environment
-RUN python3 -m venv /opt/venv
+RUN python -m venv /opt/venv
 
 # Activate the virtual environment and install dependencies
 ENV PATH="/opt/venv/bin:$PATH"
@@ -21,5 +21,5 @@ COPY . /app
 WORKDIR /app
 
 # Run your application
-CMD ["python3", "app.py"]
+CMD ["python", "app.py"]
 
