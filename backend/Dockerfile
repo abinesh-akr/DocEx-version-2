@@ -7,12 +7,19 @@ RUN apk add --no-cache tesseract-ocr
 RUN mkdir -p /usr/share/tessdata
 ADD  https://github.com/tesseract-ocr/tessdata/blob/main/eng.traineddata /usr/share/tessdata/eng.traineddata
 
+
+# Create a virtual environment
+RUN python3 -m venv /opt/venv
+
+# Activate the virtual environment and install dependencies
+ENV PATH="/opt/venv/bin:$PATH"
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt
+
 # Copy your application code
 COPY . /app
 WORKDIR /app
 
-# Install any additional dependencies and run your application
-RUN apk add --no-cache python3 py3-pip
-RUN pip3 install -r requirements.txt
-
+# Run your application
 CMD ["python3", "app.py"]
+
