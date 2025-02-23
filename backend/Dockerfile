@@ -1,17 +1,18 @@
-FROM python:3.9-slim
+FROM alpine:latest
 
-# Install Tesseract
-RUN apt-get update && apt-get install -y tesseract-ocr
+# Install Tesseract-OCR
+RUN apk add --no-cache tesseract-ocr
 
-# Install Python dependencies
-COPY requirements.txt .
-RUN pip install -r requirements.txt
-RUN pip install poppler-utils
-# Copy the rest of your app
+# Optionally, download language data
+RUN mkdir -p /usr/share/tessdata
+ADD  https://github.com/tesseract-ocr/tessdata/blob/main/eng.traineddata /usr/share/tessdata/eng.traineddata
+
+# Copy your application code
 COPY . /app
 WORKDIR /app
 
-# Expose port 5000 for Flask
-EXPOSE 5000
-# ✅ Reduce Gunicorn workers to prevent memory crashes
-CMD ["gunicorn", "-w", "2", "-b", "0.0.0.0:5000", "app:app"]
+# Install any additional dependencies and run your application
+RUN apk add --no-cache python3 py3-pip
+RUN pip3 install -r requirements.txt
+
+CMD ["python3", "app.py"]
