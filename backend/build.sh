@@ -2,8 +2,8 @@
 
 echo "📌 Installing Tesseract OCR & Poppler..."
 
-# ✅ Create writable directories
-INSTALL_DIR="/home/render"
+# ✅ Use /tmp/ for installation (Writable in Render)
+INSTALL_DIR="/tmp"
 TESSERACT_DIR="$INSTALL_DIR/tesseract"
 POPPLER_DIR="$INSTALL_DIR/poppler"
 mkdir -p $TESSERACT_DIR $POPPLER_DIR
