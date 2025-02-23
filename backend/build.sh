@@ -2,47 +2,24 @@
 
 echo "📌 Installing Tesseract OCR & Poppler..."
 
-# ✅ Install Required Dependencies
-sudo apt-get update && sudo apt-get install -y \
-    autoconf \
-    automake \
-    build-essential \
-    ca-certificates \
-    cmake \
-    g++ \
-    git \
-    libleptonica-dev \
-    libtesseract-dev \
-    pkg-config \
-    poppler-utils \
-    wget \
-    && rm -rf /var/lib/apt/lists/*
+# ✅ Create writable directories
+INSTALL_DIR="/home/render"
+TESSERACT_DIR="$INSTALL_DIR/tesseract"
+POPPLER_DIR="$INSTALL_DIR/poppler"
+mkdir -p $TESSERACT_DIR $POPPLER_DIR
 
-# ✅ Create directories for installation
-mkdir -p /opt/tesseract /opt/poppler
+# ✅ Download & Extract Tesseract
+echo "📌 Downloading Tesseract..."
+wget -q -O $TESSERACT_DIR/tesseract.tar.gz https://github.com/tesseract-ocr/tesseract/archive/refs/tags/5.5.0.tar.gz
+tar -xf $TESSERACT_DIR/tesseract.tar.gz -C $TESSERACT_DIR --strip-components=1
 
-# ✅ Download & Compile Tesseract 5.5.0 from Source
-echo "📌 Downloading & Compiling Tesseract..."
-wget -q -O /opt/tesseract/tesseract.tar.gz https://github.com/tesseract-ocr/tesseract/archive/refs/tags/5.5.0.tar.gz
-tar -xf /opt/tesseract/tesseract.tar.gz -C /opt/tesseract --strip-components=1
-cd /opt/tesseract
+# ✅ Download & Extract Poppler
+echo "📌 Downloading Poppler..."
+wget -q -O $POPPLER_DIR/poppler.tar.gz https://github.com/oschwartz10612/poppler-windows/archive/refs/tags/v24.08.0-0.tar.gz
+tar -xf $POPPLER_DIR/poppler.tar.gz -C $POPPLER_DIR --strip-components=1
 
-echo "📌 Building Tesseract... This may take a few minutes."
-./autogen.sh
-./configure
-make -j$(nproc)
-make install
-ldconfig
-
-# ✅ Set Tesseract Path
-export PATH=/usr/local/bin:$PATH
-echo "📌 Tesseract Installed: $(tesseract --version)"
-
-# ✅ Install Poppler (Linux-Compatible Version)
-echo "📌 Installing Poppler..."
-wget -q -O /opt/poppler/poppler.tar.gz https://github.com/oschwartz10612/poppler-windows/archive/refs/tags/v24.08.0-0.tar.gz
-tar -xf /opt/poppler/poppler.tar.gz -C /opt/poppler --strip-components=1
-export PATH=/opt/poppler/bin:$PATH
+# ✅ Set environment paths
+export PATH="$TESSERACT_DIR:$POPPLER_DIR/bin:$PATH"
 
 # ✅ Verify Installations
 echo "📌 Verifying installations..."
