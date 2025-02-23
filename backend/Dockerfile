@@ -1,15 +1,21 @@
-FROM python:3.9-slim
+# Use an official lightweight Python image
+FROM python:3.11
 
-# Install Tesseract
-RUN apt-get update && apt-get install -y tesseract-ocr
+# ✅ Install OpenCV dependencies (OpenGL)
+RUN apt-get update && apt-get install -y \
+    libgl1-mesa-glx \
+    libglib2.0-0 \
+    && rm -rf /var/lib/apt/lists/*
 
-# Install Python dependencies
-COPY requirements.txt .
-RUN pip install -r requirements.txt
-RUN pip install opencv-python
-# Copy the rest of your app
-COPY . /app
+# Set the working directory in the container
 WORKDIR /app
+
+# Copy requirements file and install dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the rest of the application
+COPY . .
 
 # Expose port 5000 for Flask
 EXPOSE 5000
