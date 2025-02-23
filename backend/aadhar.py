@@ -76,7 +76,7 @@ def find_keyword_higlight(TestFileName):
               t = pytesseract.image_to_string(img1,config=custom_oem_psm_config)
               text=text+t
               print("1")
-              #break
+              break
               
             elif  text_clean(d['text'][i])=='Enrollment' or text_clean(d['text'][i])== 'No' or text_clean(d['text'][i])=='Enrolment' :
               (x, y, w, h) = (d['left'][i], d['top'][i], d['width'][i], d['height'][i])
@@ -95,7 +95,7 @@ def find_keyword_higlight(TestFileName):
               t = pytesseract.image_to_string(img1,config=custom_oem_psm_config)
               text = text+t
               print("2")
-              #break
+              break
             elif  text_clean(d['text'][i])=='Unique' :
               (x, y, w, h) = (d['left'][i], d['top'][i], d['width'][i], d['height'][i])
               print(x,y,w,h)
@@ -109,7 +109,7 @@ def find_keyword_higlight(TestFileName):
               img_bytes.append(io.BytesIO(img_encoded.tobytes()))
               t = pytesseract.image_to_string(img1,config=custom_oem_psm_config)
               text = text+t
-              #break
+              break
     if text=='':
         text = ' '.join(d['text'])
     #print(text)
