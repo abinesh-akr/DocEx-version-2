@@ -34,8 +34,8 @@ const IncomeExtraction = ({setIncomeImages,setIncomeText}) => {
             setIncomeImages(result.images && result.images.length > 0 
                 ? result.images.map(img => `data:image/png;base64,${img}`) 
                 : []);
-            let s=result.text.split(',')
-            setIncomeText('\t\tINCOME DETAILS\nName :'+s[0]+'\nIncome :'+s[1]+'\nCertificate number :'+s[2])
+           // let s=result.text.split(',');
+            //setIncomeText('\t\tINCOME DETAILS\nName :'+s[0]+'\nIncome :'+s[1]+'\nCertificate number :'+s[2])
             setText(result.text || "No text extracted");  // Set extracted text or a default message
 
         } catch (error) {
